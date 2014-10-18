@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Meddlingwithfire.Common", "Com.Meddlingwithfire.Common\Com.Meddlingwithfire.Common.csproj", "{D30A81C3-3417-4D3C-BBD7-35969B1AA34C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Meddlingwithfire.Common.Example", "Com.Meddlingwithfire.Common.Example\Com.Meddlingwithfire.Common.Example.csproj", "{58692F19-BAFA-42BA-AAAA-6B3B5ECFA101}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D30A81C3-3417-4D3C-BBD7-35969B1AA34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D30A81C3-3417-4D3C-BBD7-35969B1AA34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D30A81C3-3417-4D3C-BBD7-35969B1AA34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D30A81C3-3417-4D3C-BBD7-35969B1AA34C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58692F19-BAFA-42BA-AAAA-6B3B5ECFA101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58692F19-BAFA-42BA-AAAA-6B3B5ECFA101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58692F19-BAFA-42BA-AAAA-6B3B5ECFA101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58692F19-BAFA-42BA-AAAA-6B3B5ECFA101}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
