@@ -9,7 +9,7 @@ Validation setup consists of three stages:
 - Set up a validator
 - Test the input model against the validator
 
-## Setting up an input model
+## 1. Setting up an input model
 Just a POCO.  Doesn't require anything special.
 
     public class ContactFormInputModel
@@ -21,7 +21,7 @@ Just a POCO.  Doesn't require anything special.
         public bool SignupForNewsletter { get; set; }
     }
 
-## Set up your validator
+## 2. Set up your validator
 The easiest way to go is to sub-class the Com.Meddlingwithfire.Common.Validation.BaseValidator class. This provides a virtual method for you to override `void DoValidate(T input)`, defines a set of convenience methods for testing various data points (`MustHaveContent`, `MustBeValidDate`, etc.), and takes care of some basic plumbing to make the validation easier to consume.
 
     public class ContactFormValidator : BaseValidator<ContactFormInputModel>
@@ -34,7 +34,7 @@ The easiest way to go is to sub-class the Com.Meddlingwithfire.Common.Validation
         }
     }
 
-## Test the input model against the validator
+## 3. Test the input model against the validator
 
     ContactFormInputModel input = new ContactFormInputModel()
     { 
@@ -60,7 +60,7 @@ The easiest way to go is to sub-class the Com.Meddlingwithfire.Common.Validation
       Console.WriteLine("No errors!");
     }
 
-Will run and output the following console lines:
+The above setup will run and output the following console lines:
 
     Errors:
     First name is required
