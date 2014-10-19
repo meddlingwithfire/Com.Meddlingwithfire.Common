@@ -9,11 +9,12 @@ namespace Com.Meddlingwithfire.Common.Example
 {
 	public class ContactFormValidator : BaseValidator<ContactFormInputModel>
 	{
-		override protected void DoValidate(ContactFormInputModel input)
+		override protected void DoValidate()
 		{
-			MustHaveContent(input.FirstName, "FirstName", "First Name");
-			MustBeValidEmailAddress(input.EmailAddress, "EmailAddress", "Email Address");
-			MustBeValidDate(input.Birthdate, "Birthdate", "Birthdate");
+            MustHaveContent(x => x.FirstName);
+			MustHaveContent(LastInput.FirstName, "FirstName", "First Name");
+            MustBeValidEmailAddress(LastInput.EmailAddress, "EmailAddress", "Email Address");
+            MustBeValidDate(LastInput.Birthdate, "Birthdate", "Birthdate");
 		}
 	}
 }
