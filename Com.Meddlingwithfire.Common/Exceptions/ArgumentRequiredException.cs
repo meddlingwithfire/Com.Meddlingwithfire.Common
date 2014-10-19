@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Com.Meddlingwithfire.Common.Exceptions
 {
-	public class ArgumentRequiredException : Exception
+	public class ArgumentRequiredException : ArgumentException
 	{
 		public ArgumentRequiredException(string argumentName)
-			: base(string.Format("{0} is a required argument.", argumentName))
+            : base(string.Format("{0} is a required argument.", argumentName), argumentName)
 		{
 
 		}
