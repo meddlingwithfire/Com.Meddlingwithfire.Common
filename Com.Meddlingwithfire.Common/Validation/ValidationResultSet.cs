@@ -24,8 +24,8 @@ namespace Com.Meddlingwithfire.Common.Validation
 
 		public void AddError(string fieldName, string errorMessage)
 		{
-			ValidationFieldResults result = _results[fieldName];
-			if (result == null)
+			ValidationFieldResults result;
+            if (!_results.TryGetValue(fieldName, out result))
 			{
 				result = new ValidationFieldResults(fieldName, errorMessage);
                 _results.Add(fieldName, result);
@@ -68,7 +68,7 @@ namespace Com.Meddlingwithfire.Common.Validation
 			List<string> messages = new List<string>();
 			foreach (ValidationFieldResults result in _results.Values)
 			{
-				IEnumerable<string> resultMessages = result.GetAllMessages();
+				IEnumerable<string> resultMessages = result.Messages;
 				foreach (string message in resultMessages)
 				{
 					messages.Add(message);
