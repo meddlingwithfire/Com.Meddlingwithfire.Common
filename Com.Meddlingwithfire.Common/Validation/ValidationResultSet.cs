@@ -6,29 +6,29 @@ namespace Com.Meddlingwithfire.Common.Validation
 {
 	public class ValidationResultSet
 	{
-		private List<ValidationFieldResults> _list;
+		private Dictionary<string, ValidationFieldResults> _results;
 
 		public ValidationResultSet()
 		{
-			_list = new List<ValidationFieldResults>();
+            _results = new Dictionary<string, ValidationFieldResults>();
 		}
 
 		public void Add(ValidationFieldResults result)
 		{
-			if (_list.Contains(result))
+			if (_results.ContainsKey(result.FieldName))
 			{
-				throw new ArgumentException("This result reference is already in the set.");
+				throw new ArgumentException("This result reference is already in the set.", result.FieldName);
 			}
-			_list.Add(result);
+			_results.Add(result.FieldName, result);
 		}
 
 		public void AddError(string fieldName, string errorMessage)
 		{
-			ValidationFieldResults result = _list.FirstOrDefault(x => x.FieldName == fieldName);
+			ValidationFieldResults result = _results[fieldName];
 			if (result == null)
 			{
 				result = new ValidationFieldResults(fieldName, errorMessage);
-				_list.Add(result);
+                _results.Add(fieldName, result);
 			}
 			else
 			{
@@ -44,14 +44,14 @@ namespace Com.Meddlingwithfire.Common.Validation
 
 		public bool HasErrorsForField(string fieldName)
 		{
-			return _list.Any(x => x.FieldName == fieldName);
+            return _results.ContainsKey(fieldName);
 		}
 
 		public bool HasErrors
 		{
 			get
 			{
-				foreach (ValidationFieldResults result in _list)
+				foreach (ValidationFieldResults result in _results.Values)
 				{
 					if (result.HasErrors)
 					{
@@ -66,7 +66,7 @@ namespace Com.Meddlingwithfire.Common.Validation
 		public IEnumerable<string> GetAllErrorMessages()
 		{
 			List<string> messages = new List<string>();
-			foreach (ValidationFieldResults result in _list)
+			foreach (ValidationFieldResults result in _results.Values)
 			{
 				IEnumerable<string> resultMessages = result.GetAllMessages();
 				foreach (string message in resultMessages)
