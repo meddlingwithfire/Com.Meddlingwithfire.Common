@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Com.Meddlingwithfire.Common.Exceptions
 {
-    public class FormattedException : Exception
+    public class InvalidMemberException : Exception
     {
-		public FormattedException(string format, params object[] args) : base(string.Format(format, args))
+        public InvalidMemberException(string argumentName)
+            : base(string.Format("{0} is an invalid member.", argumentName))
 		{
 
 		}

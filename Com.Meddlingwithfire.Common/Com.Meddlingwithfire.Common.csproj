@@ -40,8 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\ArgumentRequiredException.cs" />
-    <Compile Include="Exceptions\FormattedException.cs" />
-    <Compile Include="Exceptions\ShouldNeverHappenException.cs" />
+    <Compile Include="Exceptions\InvalidMemberException.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\BaseValidator.cs" />
     <Compile Include="Validation\ValidationFieldResults.cs" />

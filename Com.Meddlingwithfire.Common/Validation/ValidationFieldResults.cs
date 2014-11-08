@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using Com.Meddlingwithfire.Common.Exceptions;
+﻿using Com.Meddlingwithfire.Common.Exceptions;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Com.Meddlingwithfire.Common.Validation
 {
@@ -8,15 +9,35 @@ namespace Com.Meddlingwithfire.Common.Validation
 		public string FieldName { get; private set; }
 		private List<string> _messages;
 
-		public ValidationFieldResults(string fieldName, params string[] messages)
-		{
-			if (string.IsNullOrEmpty(fieldName))
-			{
-				throw new ArgumentRequiredException("fieldName");
-			}
-			FieldName = fieldName;
+        public ValidationFieldResults(string fieldName)
+        {
+            if (string.IsNullOrEmpty(fieldName))
+            {
+                throw new ArgumentRequiredException("fieldName");
+            }
+            FieldName = fieldName;
 
-			_messages = new List<string>();
+            _messages = new List<string>();
+        }
+
+        public bool HasErrors
+        {
+            get
+            {
+                return _messages.Any();
+            }
+        }
+
+        public IEnumerable<string> Messages
+        {
+            get
+            {
+                return _messages;
+            }
+        }
+
+		public ValidationFieldResults(string fieldName, params string[] messages) : this(fieldName)
+		{
 			foreach (string message in messages)
 			{
 				_messages.Add(message);
@@ -26,19 +47,6 @@ namespace Com.Meddlingwithfire.Common.Validation
 		public void AddError(string message)
 		{
 			_messages.Add(message);
-		}
-
-		public bool HasErrors
-		{
-			get
-			{
-				return _messages.Count > 0;
-			}
-		}
-
-		public IEnumerable<string> GetAllMessages()
-		{
-			return _messages;
 		}
 	}
 }
